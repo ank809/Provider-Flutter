@@ -12,6 +12,7 @@ class SecondPage extends StatefulWidget {
 class _SecondPageState extends State<SecondPage> {
   @override
   Widget build(BuildContext context) {
+    // widget which rebuilds itself when Changenotifier it depends on changes
     return Consumer<NumberListProvider>(
   builder:(context, numberListProvider, child) => Scaffold(
         appBar: AppBar(title: const Text('Counter App Second Page' ),),
