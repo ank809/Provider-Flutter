@@ -35,31 +35,34 @@ class _HomePageState extends State<HomePage> {
           width: MediaQuery.of(context).size.width,
           child:Column(
             children: [
-              myListTile('Pizza Margherita', Colors.pink, cartitems, false),
-              myListTile('Spaghetti', Colors.yellow,cartitems,false),
-              myListTile('Calzone', Colors.blue, cartitems,false),
-              myListTile('Tiramisu', Colors.grey, cartitems,false),
-              myListTile('Lasagna', Colors.green, cartitems,false),
-              myListTile('Bruschetta', Colors.red, cartitems,false),
-              myListTile('Ravioli', Colors.deepPurple, cartitems,false),
-              myListTile('Caprese Salad', Colors.orange, cartitems,false),
-              myListTile('Ossobuco alla Milanese', Colors.cyan, cartitems,false),
+              myListTile('Pizza Margherita', Colors.pink, cartitems, ),
+              myListTile('Spaghetti', Colors.yellow,cartitems),
+              myListTile('Calzone', Colors.blue, cartitems),
+              myListTile('Tiramisu', Colors.grey, cartitems),
+              myListTile('Lasagna', Colors.green, cartitems),
+              myListTile('Bruschetta', Colors.red, cartitems),
+              myListTile('Ravioli', Colors.deepPurple, cartitems),
+              myListTile('Caprese Salad', Colors.orange, cartitems),
+              myListTile('Ossobuco alla Milanese', Colors.cyan, cartitems),
             ],
           )
         ),
       ),
     );
   }
-  Widget myListTile(String title, Color color, CartItems cartitem, bool isclicked){
+  Widget myListTile(String title, Color color, CartItems cartitem){
     return Container(
       margin: const EdgeInsets.all(15.0),
       color: color,
       child: ListTile(
         title: Text(title),
         trailing: IconButton(onPressed: (){
-          isclicked=!isclicked;
-          cartitem.onclick(title, isclicked);
-        },icon: isclicked? const Icon(Icons.check):const Icon(Icons.add)),
+          if(cartitem.isItemInCart(title)){
+            cartitem.remove(title);
+          }else{
+          cartitem.onclickadd(title);
+          }
+        },icon: cartitem.isItemInCart(title)? const Icon(Icons.check):const Icon(Icons.add)),
       ),
     );
   }

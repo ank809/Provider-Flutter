@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 class CartItems extends ChangeNotifier {
   List<String> items = [];
 
-  void onclick(String title, bool isclicked) {
-    if (isclicked) {
+  void onclickadd(String title) {
       items.add(title);
-    } else {
-      items.remove(title);
-    }
     notifyListeners();
+  }
+  bool isItemInCart(String title){
+    return items.contains(title);
   }
 
   void remove(String title){

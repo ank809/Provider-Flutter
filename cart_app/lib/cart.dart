@@ -7,6 +7,8 @@ class MyCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Consumer<CartItems>(
       builder: (context, cartitems, child) => Scaffold(
           backgroundColor: Colors.amber.shade50,
